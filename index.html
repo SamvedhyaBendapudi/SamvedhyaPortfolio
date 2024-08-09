@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samvedhya Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">SB</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <canvas id="nokey">
+      Your Browser Don't Support Canvas, Please Download Chrome ^_^``
+    </canvas>
+    <section id="profile">
+
+      <div class="section-pic-container">
+        <img src="./assets/profile-samvedhya.jpg" alt="Samvedhya profile picture" />
+      </div>
+      <div class="section-text">
+        <p class="section-text-p1">Hello, I'm</p>
+        <h1 class="title">Samvedhya Bendapudi</h1>
+        <p class="section-text-p2">Software Developer | Full Stack Developer</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/Samvedhyaresume.pdf')"
+          >
+            Download CV
+            
+            
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            <button class="btn btn-color-1" onclick="location.href='https://www.linkedin.com/in/samvedhya-bendapudi';"
+             
+            </button>
+            
+          
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/SamvedhyaBendapudi/SamvedhyaBendapudi.git'"
+          />
+        </div>
+      </div>
+      
+    </section>
+    <section id="about">
+      <h2 class="section-text-p2 section-title">About Me</h1>
+      <div class="about-container">
+      <div class="section-pic-container">
+        <img id="about-pic" src="./assets/about-samvedhya.jpg" alt="Samvedhya profile picture" />
+      </div>
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>
+              I am a dedicated Full Stack Engineer and Software Developer with extensive expertise in Python, Java, Web Development, and interest Machine Learning.
+              My dynamic skill set, which encompasses Full-Stack programming has enabled me to deliver actionable insights and optimize operations in roles at Hitachi Vantara and as an Application Engineer Intern.
+              I approach every task with a unique blend of technical skill and analytical intelligence, supported by a strong project portfolio and a proven track record of outstanding academic achievement.
+            </p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="text-container">
+        <p>
+          I'm on a mission to create innovative, captivating, and inspiring digital experiences by experimenting with the nexus of technology and imagination. Join me as we explore the constantly changing field of software engineering, one line of code at a time, with a love of problem-solving and an unquenchable curiosity.
+        </p>
+      </div>
+      
+    </section>
+    <section class="experience section" id="experience">
+      <h2 class="section-text-p2 section-title">Experience</h2>
+      <p class="experience-subtitle-main">My Personal Journey</p>
+
+      <div class="experience-container container">
+          <div class="experience-tabs">
+              <div class="section-text-p1 experience-button button--flex experience-active" data-target="#education">
+                  <i class="uil uil-graduation-cap experience-icon"></i>
+                  Education
+              </div>
+              <div class="section-text-p1 experience-button button--flex" data-target="#work">
+                  <i class="uil uil-briefcase-alt experience-icon"></i>
+                  Work
+              </div>
+          </div>
+
+          <div class="experience-sections">
+              <div class="experience-content experience-active" data-content id="education">
+
+                  <div class="experience-data">
+                      <div>
+                          <h3 class="experience-title">Master's in Computer Science</h3>
+                          <span class="experience-subtitle">San Diego State University</span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              2024 - 2026
+                          </div>
+                      </div>
+                          
+                      <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                          <span class="experience-line"></span>
+                      </div>
+                  </div>
+
+                  <div class="experience-data">
+                      <div></div>
+                      <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                      </div>
+                      <div>
+                          <h3 class="experience-title">Bachelor's in Computer Science and Engineering</h3>
+                          <span class="experience-subtitle">Gitam University</span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              2019 - 2023
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+              <div class="experience-content experience-content-work experience-deactive" data-content id="work">
+                  <div class="experience-data">
+                      <div></div>
+                       <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                          <span class="experience-line"></span>
+                      </div>
+                      <div>
+                          <h3 class="experience-title">Teaching Assistant CS 150L</h3>
+                          <span class="experience-subtitle">San Diego State University</span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              August 2024 - Present
+                          </div>
+                      </div>
+                  </div>
+                
+                  <div class="experience-data">
+                      <div>
+                          <h3 class="experience-title">Software Development Intern</h3>
+                          <span class="experience-subtitle">MPB Ark Exim Pvt. Ltd.</span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              October 2023 - June 2024
+                          </div>
+                      </div>
+                      <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                          <span class="experience-line"></span>
+                      </div>
+                  </div>
+                  
+                  <div class="experience-data">
+                      <div></div>
+                       <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                          <span class="experience-line"></span>
+                      </div>
+                      <div>
+                          <h3 class="experience-title">Application Engineer Intern</h3>
+                          <span class="experience-subtitle">Hitachi Vantara (Hitachi Digital Services)</span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              January 2023 - August 2023
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="experience-data">
+                      <div>
+                          <h3 class="experience-title">Cyber Security Intern</h3>
+                          <span class="experience-subtitle">Ethical Edufabrica Pvt. Ltd </span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              April 2022 - June 2022
+                          </div>
+                      </div>
+                      <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                          <span class="experience-line"></span>
+                      </div>
+                      
+                  </div>
+
+                  <div class="experience-data">
+                      <div></div>
+                       <div class="experience-progress">
+                          <span class="experience-rounder"></span>
+                          <span class="experience-line"></span>
+                      </div>
+                      <div>
+                          <h3 class="experience-title">Full Stack Developer Intern</h3>
+                          <span class="experience-subtitle">Skillsquad </span>
+                          <div class="experience-calendar">
+                              <i class="uil uil-calendar-alt"></i>
+                              October 2021 - March 2022
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="experience-data">
+                    <div>
+                        <h3 class="experience-title">Machine Learning Intern</h3>
+                        <span class="experience-subtitle">Datapro</span>
+                        <div class="experience-calendar">
+                            <i class="uil uil-calendar-alt"></i>
+                            August 2020 - January 2021
+                        </div>
+                    </div>
+                    <div class="experience-progress">
+                        <span class="experience-rounder"></span>
+                        <span class="experience-line"></span>
+                    </div>
+                </div>
+
+                
+
+              </div>
+          </div>
+      </div>
+      
+  <!-- </section>
+    <section id="skills">
+      <h2 class="section-text-p2 section-title">My Skills</h2>
+      <div class="skill-details-container">
+        <div class="skill-containers">
+          <div class="details-container">
+            <h2 class="skill-sub-title">Frontend Development</h2>
+            <div class="skill-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>SASS</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>TypeScript</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Material UI</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>React</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>jQuery</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="details-container">
+            <h2 class="skill-sub-title">Backend Development</h2>
+            <div class="skill-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>PostgreSQL</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MySQL</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Node JS</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Express JS</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Django</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="details-container">
+            <h2 class="skill-sub-title">Machine Learning</h2>
+            <div class="skill-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Numpy</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Pytorch</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Tensorflow</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Pandas</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Mathplotlib</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Seaborn</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>sci-kit learn</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Tableau</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>nltk</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>hugging face</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Streamlit</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="details-container">
+            <h2 class="skill-sub-title">Other</h2>
+            <div class="skill-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>BeautifulSoup</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CI/CD</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Unit Testing</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>REST</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>OOP</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Git</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="details-container">
+            <h2 class="skill-sub-title">Database Development</h2>
+            <div class="skill-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>PostgreSQL</h3>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Skill icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MySQL</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div> -->
+       <section class="skills section" id="skills">
+                <h2 class="section-title">Skills</h2>
+
+                <div class="skills__container bd-grid">
+                    <div class="skills__box">
+                        <h3 class="skills__subtitle">Languages</h3>
+                        <span class="skills__name">Java</span>
+                        <span class="skills__name">Python</span>
+                        <span class="skills__name">C</span>
+                        <span class="skills__name">Javascript</span>
+                        <span class="skills__name">Matlab</span>
+
+                        <h3 class="skills__subtitle">Machine Learning</h3>
+                        <span class="skills__name">Numpy</span>
+                        <span class="skills__name">Pandas</span>
+                        <span class="skills__name">Matplotlib</span>
+                         <span class="skills__name">Tableau</span>
+                        <span class="skills__name">sci-kit learn</span>
+                        <span class="skills__name">Tensorflow</span>
+                        <span class="skills__name">Pytorch</span>
+                        <span class="skills__name">Pyspark</span>
+                        <span class="skills__name">Keras</span>                        
+                        <span class="skills__name">OpenCV</span>
+                        <span class="skills__name">MLOPS</span>
+                        <span class="skills__name">Spacy</span>
+                        
+
+                        <h3 class="skills__subtitle">Frontend</h3>
+                        <span class="skills__name">Html</span>
+                        <span class="skills__name">Css</span>
+                        <span class="skills__name">Javascript</span>
+                        <span class="skills__name">SASS</span>
+                        <span class="skills__name">React</span>
+                        <span class="skills__name">jQuery</span>
+                        <span class="skills__name">Bootstrap</span>
+                        
+                        <h3 class="skills__subtitle">Backend</h3>
+                        <span class="skills__name">Node.js</span>
+                        <span class="skills__name">Express</span>
+                        <span class="skills__name">Springboot</span>
+
+                        <h3 class="skills__subtitle">Database</h3>
+                        <span class="skills__name">MySQL</span>
+                        <span class="skills__name">NoSQL</span>
+                        <span class="skills__name">PostgreSQL</span>
+                        <span class="skills__name">Mongodb</span>
+
+                        <h3 class="skills__subtitle">Development</h3>
+                        <span class="skills__name">OOP</span>
+                        <span class="skills__name">CI/CD</span>
+                        <span class="skills__name">REST</span>
+                        <span class="skills__name">AWS</span>
+
+                        <h3 class="skills__subtitle">Testing</h3>
+                        <span class="skills__name">Pytest</span>
+                        <span class="skills__name">Unittest</span>
+
+                        <h3 class="skills__subtitle">Tools</h3>
+                        <span class="skills__name">Git</span>
+                        <span class="skills__name">Maven</span>
+                        <span class="skills__name">Postman</span>
+                        
+
+                        <h3 class="skills__subtitle">Other Skills</h3>
+                        <span class="skills__name">Wireshark</span>
+                        <span class="skills__name">Burpsuit</span>
+                        <span class="skills__name">Hadoop</span>
+                        <span class="skills__name">Docker</span>
+                        <span class="skills__name">Kubernetes</span>
+                        <span class="skills__name">Docker</span>
+                        <span class="skills__name">Ansible</span>
+                        <span class="skills__name">Microsoft Tools</span>
+                        
+                    </div>
+
+                </div>
+            </section>
+            
+          
+    <section id="projects">
+      <h2 class="section-text-p2 section-title">Projects</h2>
+      <div class="project-containers">
+        <div class="project-container color-container">
+          <img
+            src="./assets/project-1.jpg"
+            alt="Project 1"
+            class="project-img"
+          />
+          <h2 class="skill-sub-title project-title">Fitness Application using Rapid API</h2>
+          <div class="btn-container">
+            <button
+              class="btn btn-color-2 project-btn"
+              onclick="location.href='https://github.com/SamvedhyaBendapudi/fitness-app.git'"
+            >
+              Github
+            </button>
+          </div>
+        </div>
+        <div class="project-container color-container">
+          <img
+            src="./assets/project-2.jpg"
+            alt="Project 2"
+            class="project-img"
+          />
+          <h2 class="skill-sub-title project-title">Brain Tumor Detection System using ML</h2>
+          <div class="btn-container">
+            <button
+              class="btn btn-color-2 project-btn"
+              onclick="location.href='https://github.com/SamvedhyaBendapudi/Brain-tumor-detection.git'"
+            >
+              Github
+            </button>
+          </div>
+        </div>
+        <div class="project-container color-container">
+          <img
+            src="./assets/undraw_programmer_re_owql.svg"
+            alt="Project 3"
+            class="project-img"
+          />
+          <h2 class="skill-sub-title project-title">Securely Deploying Files into Cloud Environment by Encryption</h2>
+          <div class="btn-container">
+            <button
+              class="btn btn-color-2 project-btn"
+              onclick="location.href='https://github.com/SamvedhyaBendapudi/Encrypting_Files.git'"
+            >
+              Github
+            </button>
+            <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/Research paper.pdf')"
+            >
+              Publish
+            </button>
+          </div>
+        </div>
+      </div>
+     
+    </section>
+    
+    
+    <section id="contact">
+      <h2 class="section-text-p2 section-title">Contact Me</h2>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:sbendapudi3769@sdsu.edu">sbendapudi3769@sdsu.edu</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            <button class="btn btn-color-1" onclick="location.href='https://www.linkedin.com/in/samvedhya-bendapudi';"
+            ></button>
+        </div>
+        
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
