@@ -1,375 +1,324 @@
-var canvas = document.getElementById('nokey'),
-   can_w = parseInt(canvas.getAttribute('width')),
-   can_h = parseInt(canvas.getAttribute('height')),
-   ctx = canvas.getContext('2d');
+/* ==========================================================
+   SAMVEDHYA PORTFOLIO - Enhanced Scripts
+   ========================================================== */
 
-// console.log(typeof can_w);
-var BALL_NUM = 30
+// -- Canvas Particle Animation (Refined) --
+var canvas = document.getElementById('nokey');
+var ctx = canvas.getContext('2d');
 
-var ball = {
-      x: 0,
-      y: 0,
-      vx: 0,
-      vy: 0,
-      r: 0,
-      alpha: 1,
-      phase: 0
-   },
-   ball_color = {
-       r: 207,
-       g: 255,
-       b: 4
-   },
-   R = 2,
-   balls = [],
-   alpha_f = 0.03,
-   alpha_phase = 0,
-    
-// Line
-   link_line_width = 0.8,
-   dis_limit = 260,
-   add_mouse_point = true,
-   mouse_in = false,
-   mouse_ball = {
-      x: 0,
-      y: 0,
-      vx: 0,
-      vy: 0,
-      r: 0,
-      type: 'mouse'
-   };
+var canW, canH;
+var PARTICLE_COUNT = 60;
+var particles = [];
+var CONNECT_DISTANCE = 160;
+var LINE_WIDTH = 0.5;
+var PARTICLE_COLOR = { r: 148, g: 163, b: 184 };
 
-// Random speed
-function getRandomSpeed(pos){
-    var  min = -1,
-       max = 1;
-    switch(pos){
-        case 'top':
-            return [randomNumFrom(min, max), randomNumFrom(0.1, max)];
-            break;
-        case 'right':
-            return [randomNumFrom(min, -0.1), randomNumFrom(min, max)];
-            break;
-        case 'bottom':
-            return [randomNumFrom(min, max), randomNumFrom(min, -0.1)];
-            break;
-        case 'left':
-            return [randomNumFrom(0.1, max), randomNumFrom(min, max)];
-            break;
-        default:
-            return;
-            break;
-    }
-}
-function randomArrayItem(arr){
-    return arr[Math.floor(Math.random() * arr.length)];
-}
-function randomNumFrom(min, max){
-    return Math.random()*(max - min) + min;
-}
-console.log(randomNumFrom(0, 10));
-// Random Ball
-function getRandomBall(){
-    var pos = randomArrayItem(['top', 'right', 'bottom', 'left']);
-    switch(pos){
-        case 'top':
-            return {
-                x: randomSidePos(can_w),
-                y: -R,
-                vx: getRandomSpeed('top')[0],
-                vy: getRandomSpeed('top')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-        case 'right':
-            return {
-                x: can_w + R,
-                y: randomSidePos(can_h),
-                vx: getRandomSpeed('right')[0],
-                vy: getRandomSpeed('right')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-        case 'bottom':
-            return {
-                x: randomSidePos(can_w),
-                y: can_h + R,
-                vx: getRandomSpeed('bottom')[0],
-                vy: getRandomSpeed('bottom')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-        case 'left':
-            return {
-                x: -R,
-                y: randomSidePos(can_h),
-                vx: getRandomSpeed('left')[0],
-                vy: getRandomSpeed('left')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-    }
-}
-function randomSidePos(length){
-    return Math.ceil(Math.random() * length);
+var mouseIn = false;
+var mouseBall = { x: 0, y: 0, type: 'mouse' };
+
+function initCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canW = canvas.width;
+  canH = canvas.height;
 }
 
-// Draw Ball
-function renderBalls(){
-    Array.prototype.forEach.call(balls, function(b){
-       if(!b.hasOwnProperty('type')){
-           ctx.fillStyle = 'rgba('+ball_color.r+','+ball_color.g+','+ball_color.b+','+b.alpha+')';
-           ctx.beginPath();
-           ctx.arc(b.x, b.y, R, 0, Math.PI*2, true);
-           ctx.closePath();
-           ctx.fill();
-       }
-    });
+function randomBetween(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
-// Update balls
-function updateBalls(){
-    var new_balls = [];
-    Array.prototype.forEach.call(balls, function(b){
-        b.x += b.vx;
-        b.y += b.vy;
-        
-        if(b.x > -(50) && b.x < (can_w+50) && b.y > -(50) && b.y < (can_h+50)){
-           new_balls.push(b);
-        }
-        
-        // alpha change
-        b.phase += alpha_f;
-        b.alpha = Math.abs(Math.cos(b.phase));
-        // console.log(b.alpha);
-    });
-    
-    balls = new_balls.slice(0);
+function createParticle() {
+  return {
+    x: randomBetween(0, canW),
+    y: randomBetween(0, canH),
+    vx: randomBetween(-0.3, 0.3),
+    vy: randomBetween(-0.3, 0.3),
+    r: randomBetween(1, 2.5),
+    alpha: randomBetween(0.2, 0.7),
+    phase: randomBetween(0, Math.PI * 2)
+  };
 }
 
-// loop alpha
-function loopAlphaInf(){
-    
-}
-
-// Draw lines
-function renderLines(){
-    var fraction, alpha;
-    for (var i = 0; i < balls.length; i++) {
-        for (var j = i + 1; j < balls.length; j++) {
-           
-           fraction = getDisOf(balls[i], balls[j]) / dis_limit;
-            
-           if(fraction < 1){
-               alpha = (1 - fraction).toString();
-
-               ctx.strokeStyle = 'rgba(150,150,150,'+alpha+')';
-               ctx.lineWidth = link_line_width;
-               
-               ctx.beginPath();
-               ctx.moveTo(balls[i].x, balls[i].y);
-               ctx.lineTo(balls[j].x, balls[j].y);
-               ctx.stroke();
-               ctx.closePath();
-           }
-        }
-    }
-}
-
-// calculate distance between two points
-function getDisOf(b1, b2){
-    var  delta_x = Math.abs(b1.x - b2.x),
-       delta_y = Math.abs(b1.y - b2.y);
-    
-    return Math.sqrt(delta_x*delta_x + delta_y*delta_y);
-}
-
-// add balls if there a little balls
-function addBallIfy(){
-    if(balls.length < BALL_NUM){
-        balls.push(getRandomBall());
-    }
-}
-
-// Render
-function render(){
-    ctx.clearRect(0, 0, can_w, can_h);
-    
-    renderBalls();
-    
-    renderLines();
-    
-    updateBalls();
-    
-    addBallIfy();
-    
-    window.requestAnimationFrame(render);
-}
-
-// Init Balls
-function initBalls(num){
-    for(var i = 1; i <= num; i++){
-        balls.push({
-            x: randomSidePos(can_w),
-            y: randomSidePos(can_h),
-            vx: getRandomSpeed('top')[0],
-            vy: getRandomSpeed('top')[1],
-            r: R,
-            alpha: 1,
-            phase: randomNumFrom(0, 10)
-        });
-    }
-}
-// Init Canvas
-function initCanvas(){
-    canvas.setAttribute('width', window.innerWidth);
-    canvas.setAttribute('height', window.innerHeight);
-    
-    can_w = parseInt(canvas.getAttribute('width'));
-    can_h = parseInt(canvas.getAttribute('height'));
-}
-window.addEventListener('resize', function(e){
-    console.log('Window Resize...');
-    initCanvas();
-});
-
-function goMovie(){
-    initCanvas();
-    initBalls(BALL_NUM);
-    window.requestAnimationFrame(render);
-}
-goMovie();
-
-// Mouse effect
-canvas.addEventListener('mouseenter', function(){
-    console.log('mouseenter');
-    mouse_in = true;
-    balls.push(mouse_ball);
-});
-canvas.addEventListener('mouseleave', function(){
-    console.log('mouseleave');
-    mouse_in = false;
-    var new_balls = [];
-    Array.prototype.forEach.call(balls, function(b){
-        if(!b.hasOwnProperty('type')){
-            new_balls.push(b);
-        }
-    });
-    balls = new_balls.slice(0);
-});
-canvas.addEventListener('mousemove', function(e){
-    var e = e || window.event;
-    mouse_ball.x = e.pageX;
-    mouse_ball.y = e.pageY;
-    // console.log(mouse_ball);
-});
-
-function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
-}
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
-  const toggle = document.getElementById(toggleId),
-  nav = document.getElementById(navId)
-
-  if(toggle && nav){
-      toggle.addEventListener('click', ()=>{
-          nav.classList.toggle('show')
-      })
+function initParticles() {
+  particles.length = 0;
+  for (var i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(createParticle());
   }
 }
-showMenu('nav-toggle','nav-menu')
 
-/*===== REMOVE MENU MOBILE =====*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction(){
-  const navMenu = document.getElementById('nav-menu')
-  navMenu.classList.remove('show')
+function drawParticles() {
+  for (var i = 0; i < particles.length; i++) {
+    var p = particles[i];
+    if (p.type === 'mouse') continue;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(' + PARTICLE_COLOR.r + ',' + PARTICLE_COLOR.g + ',' + PARTICLE_COLOR.b + ',' + p.alpha + ')';
+    ctx.fill();
+  }
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
 
-/*===== SCROLL SECTIONS ACTIVE LINK =====*/
-const sections = document.querySelectorAll('section[id]')
-
-window.addEventListener('scroll', scrollActive)
-
-function scrollActive(){
-  const scrollY = window.pageYOffset
-
-  sections.forEach(current =>{
-      const sectionHeight = current.offsetHeight
-      const sectionTop = current.offsetTop - 50;
-      sectionId = current.getAttribute('id')
-
-      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-          document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active')
-      }else{
-          document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active')
+function drawLines() {
+  for (var i = 0; i < particles.length; i++) {
+    for (var j = i + 1; j < particles.length; j++) {
+      var dx = particles[i].x - particles[j].x;
+      var dy = particles[i].y - particles[j].y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < CONNECT_DISTANCE) {
+        var alpha = (1 - dist / CONNECT_DISTANCE) * 0.25;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = 'rgba(' + PARTICLE_COLOR.r + ',' + PARTICLE_COLOR.g + ',' + PARTICLE_COLOR.b + ',' + alpha + ')';
+        ctx.lineWidth = LINE_WIDTH;
+        ctx.stroke();
       }
-  })
+    }
+  }
 }
 
-const tabs = document.querySelectorAll('[data-target]');
-const tabContents = document.querySelectorAll('[data-content]');
+function updateParticles() {
+  for (var i = 0; i < particles.length; i++) {
+    var p = particles[i];
+    if (p.type === 'mouse') continue;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.phase += 0.008;
+    p.alpha = 0.2 + Math.abs(Math.sin(p.phase)) * 0.5;
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-      const target = document.querySelector(tab.dataset.target);
-      tabContents.forEach(tabContent => {
-          tabContent.classList.remove('experience-active');
-          tabContent.classList.add('experience-deactive')
-      })
-      target.classList.remove('experience-deactive')
-      target.classList.add('experience-active');
-  })
-})
+    if (p.x < -10) p.x = canW + 10;
+    if (p.x > canW + 10) p.x = -10;
+    if (p.y < -10) p.y = canH + 10;
+    if (p.y > canH + 10) p.y = -10;
+  }
+}
 
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-  origin: 'top',
-  distance: '80px',
-  duration: 2000,
-  reset: true
-})
+function animate() {
+  ctx.clearRect(0, 0, canW, canH);
+  drawParticles();
+  drawLines();
+  updateParticles();
+  requestAnimationFrame(animate);
+}
 
-/*SCROLL HOME*/
-sr.reveal('.home__title', {})
-sr.reveal('.home__scroll', {delay: 200})
-sr.reveal('.home__img', {origin:'right', delay: 400})
+initCanvas();
+initParticles();
+animate();
 
-/*SCROLL ABOUT*/
-sr.reveal('.about__img', {delay: 500})
-sr.reveal('.about__subtitle', {delay: 300})
-sr.reveal('.about__profession', {delay: 400})
-sr.reveal('.about__text', {delay: 500})
-sr.reveal('.about__social-icon', {delay: 600, interval: 200})
+window.addEventListener('resize', function() {
+  initCanvas();
+});
 
-/*SCROLL QUALIFICATION*/
-sr.reveal('.experience-subtitle-main', {delay: 200})
-sr.reveal('.experience-tabs', {delay: 300})
+document.addEventListener('mousemove', function(e) {
+  mouseBall.x = e.clientX;
+  mouseBall.y = e.clientY;
+  if (!mouseIn) {
+    mouseIn = true;
+    particles.push(mouseBall);
+  }
+});
 
-/*SCROLL SKILLS*/
-sr.reveal('.skills__subtitle', {})
-sr.reveal('.skills__name', {distance: '20px', delay: 50, interval: 100})
-sr.reveal('.skills__img', {delay: 400})
+document.addEventListener('mouseleave', function() {
+  mouseIn = false;
+  var idx = particles.indexOf(mouseBall);
+  if (idx !== -1) particles.splice(idx, 1);
+});
 
-/*SCROLL PORTFOLIO*/
-sr.reveal('.portfolio__img', {interval: 200})
+// -- Cursor Glow Follower --
+var cursorGlow = document.getElementById('cursorGlow');
+var glowX = 0, glowY = 0;
+var targetGlowX = 0, targetGlowY = 0;
 
-/*SCROLL CONTACT*/
-sr.reveal('.contact__subtitle', {})
-sr.reveal('.contact__text', {interval: 200})
-sr.reveal('.contact__input', {delay: 400})
-sr.reveal('.contact__button', {delay: 600})
+document.addEventListener('mousemove', function(e) {
+  targetGlowX = e.clientX;
+  targetGlowY = e.clientY;
+  cursorGlow.classList.add('active');
+});
+
+document.addEventListener('mouseleave', function() {
+  cursorGlow.classList.remove('active');
+});
+
+function animateGlow() {
+  glowX += (targetGlowX - glowX) * 0.12;
+  glowY += (targetGlowY - glowY) * 0.12;
+  cursorGlow.style.left = glowX + 'px';
+  cursorGlow.style.top = glowY + 'px';
+  requestAnimationFrame(animateGlow);
+}
+animateGlow();
+
+// -- Scroll Progress Bar --
+var scrollProgress = document.getElementById('scrollProgress');
+
+function updateScrollProgress() {
+  var scrollTop = window.scrollY || window.pageYOffset;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollProgress.style.width = percent + '%';
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+
+// -- Navigation --
+function toggleMenu() {
+  var menu = document.querySelector('.menu-links');
+  var icon = document.querySelector('.hamburger-icon');
+  menu.classList.toggle('open');
+  icon.classList.toggle('open');
+}
+
+var desktopNav = document.getElementById('desktop-nav');
+
+function updateNavScroll() {
+  if (desktopNav) {
+    if (window.scrollY > 50) {
+      desktopNav.classList.add('scrolled');
+    } else {
+      desktopNav.classList.remove('scrolled');
+    }
+  }
+}
+
+window.addEventListener('scroll', updateNavScroll);
+
+// Active link highlighting
+var navLinksAll = document.querySelectorAll('.nav-links a');
+var allSections = document.querySelectorAll('section[id]');
+
+function updateActiveLink() {
+  var scrollY = window.scrollY + 200;
+  allSections.forEach(function(section) {
+    var top = section.offsetTop;
+    var height = section.offsetHeight;
+    var id = section.getAttribute('id');
+    if (scrollY >= top && scrollY < top + height) {
+      navLinksAll.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveLink);
+
+// -- Typing Effect --
+var typedElement = document.getElementById('typed-text');
+var roles = [
+  'Software Engineer',
+  'Full Stack Developer',
+  'ML Enthusiast',
+  'Problem Solver'
+];
+var roleIndex = 0;
+var charIndex = 0;
+var isDeleting = false;
+
+function typeEffect() {
+  var currentRole = roles[roleIndex];
+  var speed = 100;
+
+  if (isDeleting) {
+    typedElement.textContent = currentRole.substring(0, charIndex - 1);
+    charIndex--;
+    speed = 50;
+  } else {
+    typedElement.textContent = currentRole.substring(0, charIndex + 1);
+    charIndex++;
+    speed = 100;
+  }
+
+  if (!isDeleting && charIndex === currentRole.length) {
+    speed = 2200;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+    speed = 400;
+  }
+
+  setTimeout(typeEffect, speed);
+}
+
+typeEffect();
+
+// -- Experience Tabs --
+var tabBtns = document.querySelectorAll('.tab-btn');
+var tabPanels = document.querySelectorAll('.tab-panel');
+
+tabBtns.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    tabBtns.forEach(function(b) { b.classList.remove('active'); });
+    tabPanels.forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    var target = document.getElementById(btn.dataset.target);
+    if (target) target.classList.add('active');
+  });
+});
+
+// -- 3D Tilt Effect on Project Cards --
+var tiltCards = document.querySelectorAll('.tilt-card');
+
+tiltCards.forEach(function(card) {
+  card.addEventListener('mousemove', function(e) {
+    var rect = card.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    var centerX = rect.width / 2;
+    var centerY = rect.height / 2;
+    var rotateX = ((y - centerY) / centerY) * -8;
+    var rotateY = ((x - centerX) / centerX) * 8;
+    card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)';
+  });
+
+  card.addEventListener('mouseleave', function() {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  });
+});
+
+// -- Back to Top Button --
+var backToTop = document.getElementById('backToTop');
+
+function updateBackToTop() {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+}
+
+window.addEventListener('scroll', updateBackToTop);
+
+backToTop.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// -- Scroll Reveal (Intersection Observer) --
+var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-up');
+
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var el = entry.target;
+      if (el.classList.contains('reveal-up') && el.parentElement) {
+        var siblings = Array.from(el.parentElement.children);
+        var idx = siblings.indexOf(el);
+        var delay = idx * 120;
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, delay);
+      } else {
+        el.classList.add('visible');
+      }
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+revealElements.forEach(function(el) {
+  revealObserver.observe(el);
+});

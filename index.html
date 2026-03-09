@@ -2,15 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samvedhya Portfolio</title>
+    <title>Samvedhya Bendapudi | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Desktop Navigation -->
     <nav id="desktop-nav">
-      <div class="nav-links-container">
+      <div class="nav-container">
+        <a href="#profile" class="nav-logo">
+          <span class="logo-bracket">&lt;</span>SB<span class="logo-bracket"> /&gt;</span>
+        </a>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -20,401 +33,407 @@
         </ul>
       </div>
     </nav>
+
+    <!-- Mobile Navigation -->
     <nav id="hamburger-nav">
-      <div class="logo">SB</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      <div class="nav-container">
+        <a href="#profile" class="nav-logo">
+          <span class="logo-bracket">&lt;</span>SB<span class="logo-bracket"> /&gt;</span>
+        </a>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="menu-links">
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+          </div>
         </div>
       </div>
     </nav>
-    <canvas id="nokey">
-      Your Browser Don't Support Canvas, Please Download Chrome ^_^``
-    </canvas>
+
+    <!-- Particle Canvas Background -->
+    <canvas id="nokey"></canvas>
+
+    <!-- Hero Section -->
     <section id="profile">
-
-      <div class="section-pic-container">
-        <img src="./assets/profile-samvedhya.jpg" alt="Samvedhya profile picture" />
+      <!-- Animated Gradient Blobs -->
+      <div class="hero-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
       </div>
-      <div class="section-text">
-        <p class="section-text-p1">Hello, I'm</p>
-        <h1 class="title">Samvedhya Bendapudi</h1>
-        <p class="section-text-p2">Software Developer | Full Stack Developer</p>
-        <div class="btn-container">
-          <button
-  class="btn btn-color-2"
-  onclick="window.open('./assets/Samvedhya Internship Resume.pdf')"
->
-  Download CV
-</button>
 
-            
+      <div class="profile-content">
+        <div class="profile-pic-container">
+          <img src="./assets/profile-samvedhya.jpg" alt="Samvedhya Bendapudi" />
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            <button class="btn btn-color-1" onclick="location.href='https://www.linkedin.com/in/samvedhya-bendapudi';"
-             
+        <div class="profile-text">
+          <p class="greeting">
+            <span class="greeting-wave">&#128075;</span> Hello, I'm
+          </p>
+          <h1 class="name">Samvedhya <span class="accent">Bendapudi</span></h1>
+          <p class="tagline">
+            <span id="typed-text"></span><span class="typed-cursor">|</span>
+          </p>
+          <div class="profile-buttons">
+            <button class="btn btn-primary btn-glow" onclick="window.open('./assets/Samvedhya Internship Resume.pdf')">
+              <i class="fa-solid fa-download"></i> Download CV
             </button>
-            
-          
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/SamvedhyaBendapudi/SamvedhyaBendapudi.git'"
-          />
-        </div>
-      </div>
-      
-    </section>
-    <section id="about">
-      <h2 class="section-text-p2 section-title">About Me</h1>
-      <div class="about-container">
-      <div class="section-pic-container">
-        <img id="about-pic" src="./assets/about-samvedhya.jpg" alt="Samvedhya profile picture" />
-      </div>
-        <div class="about-details-container">
-          <div class="text-container">
-            <p>
-              I am a dedicated Full Stack Engineer and Software Developer with extensive expertise in Python, Java, Web Development, and interest Machine Learning.
-              My dynamic skill set, which encompasses Full-Stack programming has enabled me to deliver actionable insights and optimize operations in roles at Hitachi Vantara and as an Application Engineer Intern.
-              I approach every task with a unique blend of technical skill and analytical intelligence, supported by a strong project portfolio and a proven track record of outstanding academic achievement.
-            </p>
+            <button class="btn btn-outline" onclick="location.href='#contact'">
+              <i class="fa-solid fa-envelope"></i> Contact Me
+            </button>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/samvedhya-bendapudi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/SamvedhyaBendapudi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
           </div>
         </div>
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="text-container">
-        <p>
-          I'm on a mission to create innovative, captivating, and inspiring digital experiences by experimenting with the nexus of technology and imagination. Join me as we explore the constantly changing field of software engineering, one line of code at a time, with a love of problem-solving and an unquenchable curiosity.
-        </p>
-      </div>
-      
+      <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+        <div class="mouse-scroll">
+          <div class="mouse-scroll-wheel"></div>
+        </div>
+      </a>
     </section>
-    <section class="experience section" id="experience">
-      <h2 class="section-text-p2 section-title">Experience</h2>
-      <p class="experience-subtitle-main">My Personal Journey</p>
 
-      <div class="experience-container container">
-          <div class="experience-tabs">
-              <div class="section-text-p1 experience-button button--flex experience-active" data-target="#education">
-                  <i class="uil uil-graduation-cap experience-icon"></i>
-                  Education
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="#f8fafc"></path>
+      </svg>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section-alt reveal">
+      <div class="section-header">
+        <p class="section-label">Get To Know</p>
+        <h2 class="section-title gradient-text">About Me</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-pic-container reveal-left">
+          <img src="./assets/about-samvedhya.jpg" alt="Samvedhya Bendapudi" />
+          <div class="about-pic-overlay"></div>
+        </div>
+        <div class="about-text reveal-right">
+          <p>
+            I am a dedicated Full Stack Engineer and Software Developer with extensive expertise in Python, Java, Web Development, and interest in Machine Learning.
+            My dynamic skill set, which encompasses Full-Stack programming, has enabled me to deliver actionable insights and optimize operations in roles at Hitachi Vantara and as an Application Engineer Intern.
+          </p>
+          <p>
+            I approach every task with a unique blend of technical skill and analytical intelligence, supported by a strong project portfolio and a proven track record of outstanding academic achievement.
+          </p>
+          <p>
+            I'm on a mission to create innovative, captivating, and inspiring digital experiences by experimenting with the nexus of technology and imagination. Join me as we explore the constantly changing field of software engineering, one line of code at a time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave Divider (inverted) -->
+    <div class="wave-divider wave-flip">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="#f8fafc"></path>
+      </svg>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="reveal">
+      <div class="section-header">
+        <p class="section-label">My Journey</p>
+        <h2 class="section-title gradient-text">Experience</h2>
+      </div>
+      <div class="experience-tabs">
+        <button class="tab-btn active" data-target="education">
+          <i class="fa-solid fa-graduation-cap"></i> Education
+        </button>
+        <button class="tab-btn" data-target="work">
+          <i class="fa-solid fa-briefcase"></i> Work
+        </button>
+      </div>
+      <div class="experience-panels">
+        <div class="tab-panel active" id="education">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Master's in Computer Science</h3>
+                <span class="institution">San Diego State University</span>
+                <span class="date"><i class="fa-regular fa-calendar"></i> 2024 &ndash; 2026</span>
               </div>
-              <div class="section-text-p1 experience-button button--flex" data-target="#work">
-                  <i class="uil uil-briefcase-alt experience-icon"></i>
-                  Work
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Bachelor's in Computer Science &amp; Engineering</h3>
+                <span class="institution">Gitam University</span>
+                <span class="date"><i class="fa-regular fa-calendar"></i> 2019 &ndash; 2023</span>
               </div>
-          </div>
-
-          <div class="experience-sections">
-              <div class="experience-content experience-active" data-content id="education">
-
-                  <div class="experience-data">
-                      <div>
-                          <h3 class="experience-title">Master's in Computer Science</h3>
-                          <span class="experience-subtitle">San Diego State University</span>
-                          <div class="experience-calendar">
-                              <i class="uil uil-calendar-alt"></i>
-                              2024 - 2026
-                          </div>
-                      </div>
-                          
-                      <div class="experience-progress">
-                          <span class="experience-rounder"></span>
-                          <span class="experience-line"></span>
-                      </div>
-                  </div>
-
-                  <div class="experience-data">
-                      <div></div>
-                      <div class="experience-progress">
-                          <span class="experience-rounder"></span>
-                      </div>
-                      <div>
-                          <h3 class="experience-title">Bachelor's in Computer Science and Engineering</h3>
-                          <span class="experience-subtitle">Gitam University</span>
-                          <div class="experience-calendar">
-                              <i class="uil uil-calendar-alt"></i>
-                              2019 - 2023
-                          </div>
-                      </div>
-                  </div>
-
-             </div>
-              <div class="experience-content experience-content-work experience-deactive" data-content id="work">
-                  <div class="experience-data">
-                      <div></div>
-                       <div class="experience-progress">
-                          <span class="experience-rounder"></span>
-                          <span class="experience-line"></span>
-                      </div>
-                      <div>
-                          <h3 class="experience-title">AI Software Engineer</h3>
-                          <span class="experience-subtitle">SDSU Research Foundation</span>
-                          <div class="experience-calendar">
-                              <i class="uil uil-calendar-alt"></i>
-                              February 2024 - Present
-                          </div>
-                      </div>
-                  </div>
-                
-                  <div class="experience-data">
-                      <div>
-                          <h3 class="experience-title">Software Engineer</h3>
-                          <span class="experience-subtitle">Hitachi Vantara (Hitachi Digital Services)</span>
-                          <div class="experience-calendar">
-                              <i class="uil uil-calendar-alt"></i>
-                              August 2023 - August 2024
-                          </div>
-                      </div>
-                      <div class="experience-progress">
-                          <span class="experience-rounder"></span>
-                          <span class="experience-line"></span>
-                      </div>
-                  </div>
-                  
-                  <div class="experience-data">
-                      <div></div>
-                       <div class="experience-progress">
-                          <span class="experience-rounder"></span>
-                          <span class="experience-line"></span>
-                      </div>
-                      <div>
-                          <h3 class="experience-title">Software Engineer Co-op</h3>
-                          <span class="experience-subtitle">Hitachi Vantara</span>
-                          <div class="experience-calendar">
-                              <i class="uil uil-calendar-alt"></i>
-                              January 2023 - August 2023
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="experience-data">
-                      <div>
-                          <h3 class="experience-title">Full Stack Developer (Co-op)</h3>
-                          <span class="experience-subtitle">DataPro</span>
-                          <div class="experience-calendar">
-                              <i class="uil uil-calendar-alt"></i>
-                              October 2021 - April 2022
-                          </div>
-                      </div>
-                      <div class="experience-progress">
-                          <span class="experience-rounder"></span>
-                          <span class="experience-line"></span>
-                      </div>
-                      
-                  </div>
-
-                  
-                  </div>
-                  
-                  
-
-               
-
-
-      
-
-       <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
-
-                <div class="skills__container bd-grid">
-                    <div class="skills__box">
-                        <h3 class="skills__subtitle">Languages</h3>
-                        <span class="skills__name">Java</span>
-                        <span class="skills__name">Python</span>
-                        <span class="skills__name">C</span>
-                        <span class="skills__name">Javascript</span>
-                        <span class="skills__name">Matlab</span>
-
-                        <h3 class="skills__subtitle">Machine Learning</h3>
-                        <span class="skills__name">Numpy</span>
-                        <span class="skills__name">Pandas</span>
-                        <span class="skills__name">Matplotlib</span>
-                         <span class="skills__name">Tableau</span>
-                        <span class="skills__name">sci-kit learn</span>
-                        <span class="skills__name">Tensorflow</span>
-                        <span class="skills__name">Pytorch</span>
-                        <span class="skills__name">Pyspark</span>
-                        <span class="skills__name">Keras</span>                        
-                        <span class="skills__name">OpenCV</span>
-                        <span class="skills__name">MLOPS</span>
-                        <span class="skills__name">Spacy</span>
-                        
-
-                        <h3 class="skills__subtitle">Frontend</h3>
-                        <span class="skills__name">Html</span>
-                        <span class="skills__name">Css</span>
-                        <span class="skills__name">Javascript</span>
-                        <span class="skills__name">SASS</span>
-                        <span class="skills__name">React</span>
-                        <span class="skills__name">jQuery</span>
-                        <span class="skills__name">Bootstrap</span>
-                        
-                        <h3 class="skills__subtitle">Backend</h3>
-                        <span class="skills__name">Node.js</span>
-                        <span class="skills__name">Express</span>
-                        <span class="skills__name">Springboot</span>
-
-                        <h3 class="skills__subtitle">Database</h3>
-                        <span class="skills__name">MySQL</span>
-                        <span class="skills__name">NoSQL</span>
-                        <span class="skills__name">PostgreSQL</span>
-                        <span class="skills__name">Mongodb</span>
-
-                        <h3 class="skills__subtitle">Development</h3>
-                        <span class="skills__name">OOP</span>
-                        <span class="skills__name">CI/CD</span>
-                        <span class="skills__name">REST</span>
-                        <span class="skills__name">AWS</span>
-
-                        <h3 class="skills__subtitle">Testing</h3>
-                        <span class="skills__name">Pytest</span>
-                        <span class="skills__name">Unittest</span>
-
-                        <h3 class="skills__subtitle">Tools</h3>
-                        <span class="skills__name">Git</span>
-                        <span class="skills__name">Maven</span>
-                        <span class="skills__name">Postman</span>
-                        
-
-                        <h3 class="skills__subtitle">Other Skills</h3>
-                        <span class="skills__name">Wireshark</span>
-                        <span class="skills__name">Burpsuit</span>
-                        <span class="skills__name">Hadoop</span>
-                        <span class="skills__name">Docker</span>
-                        <span class="skills__name">Kubernetes</span>
-                        <span class="skills__name">Docker</span>
-                        <span class="skills__name">Ansible</span>
-                        <span class="skills__name">Microsoft Tools</span>
-                        
-                    </div>
-
-                </div>
-            </section>
-            
-          
-    <section id="projects">
-      <h2 class="section-text-p2 section-title">Projects</h2>
-      <div class="project-containers">
-        <div class="project-container color-container">
-          <img
-            src="./assets/project-1.jpg"
-            alt="Project 1"
-            class="project-img"
-          />
-          <h2 class="skill-sub-title project-title">Fitness Application using Rapid API</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/SamvedhyaBendapudi/fitness-app.git'"
-            >
-              Github
-            </button>
+            </div>
           </div>
         </div>
-        <div class="project-container color-container">
-          <img
-            src="./assets/project-2.jpg"
-            alt="Project 2"
-            class="project-img"
-          />
-          <h2 class="skill-sub-title project-title">Brain Tumor Detection System using ML</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/SamvedhyaBendapudi/Brain-tumor-detection.git'"
-            >
-              Github
-            </button>
-          </div>
-        </div>
-        <div class="project-container color-container">
-          <img
-            src="./assets/undraw_programmer_re_owql.svg"
-            alt="Project 3"
-            class="project-img"
-          />
-          <h2 class="skill-sub-title project-title">Securely Deploying Files into Cloud Environment by Encryption</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/SamvedhyaBendapudi/Encrypting_Files.git'"
-            >
-              Github
-            </button>
-            <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/Research paper.pdf')"
-            >
-              Publish
-            </button>
+        <div class="tab-panel" id="work">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>AI Software Engineer</h3>
+                <span class="institution">SDSU Research Foundation</span>
+                <span class="date"><i class="fa-regular fa-calendar"></i> February 2024 &ndash; Present</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Software Engineer</h3>
+                <span class="institution">Hitachi Vantara (Hitachi Digital Services)</span>
+                <span class="date"><i class="fa-regular fa-calendar"></i> August 2023 &ndash; August 2024</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Software Engineer Co-op</h3>
+                <span class="institution">Hitachi Vantara</span>
+                <span class="date"><i class="fa-regular fa-calendar"></i> January 2023 &ndash; August 2023</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Full Stack Developer (Co-op)</h3>
+                <span class="institution">DataPro</span>
+                <span class="date"><i class="fa-regular fa-calendar"></i> October 2021 &ndash; April 2022</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-     
     </section>
-    
-    
-    <section id="contact">
-      <h2 class="section-text-p2 section-title">Contact Me</h2>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:sbendapudi3769@sdsu.edu">sbendapudi3769@sdsu.edu</a></p>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C240,0 480,120 720,60 C960,0 1200,120 1440,60 L1440,120 L0,120 Z" fill="#f8fafc"></path>
+      </svg>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-alt reveal">
+      <div class="section-header">
+        <p class="section-label">What I Know</p>
+        <h2 class="section-title gradient-text">Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
+            <h3>Languages</h3>
+          </div>
+          <div class="skill-tags">
+            <span>Java</span><span>Python</span><span>C</span><span>JavaScript</span><span>Matlab</span>
+          </div>
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            <button class="btn btn-color-1" onclick="location.href='https://www.linkedin.com/in/samvedhya-bendapudi';"
-            ></button>
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-brain"></i></div>
+            <h3>Machine Learning</h3>
+          </div>
+          <div class="skill-tags">
+            <span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Tableau</span><span>scikit-learn</span><span>TensorFlow</span><span>PyTorch</span><span>PySpark</span><span>Keras</span><span>OpenCV</span><span>MLOps</span><span>spaCy</span>
+          </div>
         </div>
-         <div class="contact-info-container">
-          <img
-            src="./assets/phone.png"
-            alt="Phone icon"
-            class="icon contact-icon"
-          />
-          <p><a href="">+1-(619)-(666)-(9293)</a></p>
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-palette"></i></div>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skill-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>SASS</span><span>React</span><span>jQuery</span><span>Bootstrap</span>
+          </div>
         </div>
-        
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-server"></i></div>
+            <h3>Backend</h3>
+          </div>
+          <div class="skill-tags">
+            <span>Node.js</span><span>Express</span><span>Spring Boot</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-database"></i></div>
+            <h3>Database</h3>
+          </div>
+          <div class="skill-tags">
+            <span>MySQL</span><span>NoSQL</span><span>PostgreSQL</span><span>MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-gears"></i></div>
+            <h3>DevOps &amp; Tools</h3>
+          </div>
+          <div class="skill-tags">
+            <span>Git</span><span>Docker</span><span>Kubernetes</span><span>AWS</span><span>CI/CD</span><span>Maven</span><span>Postman</span><span>Ansible</span><span>REST</span><span>OOP</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-flask-vial"></i></div>
+            <h3>Testing</h3>
+          </div>
+          <div class="skill-tags">
+            <span>Pytest</span><span>Unittest</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Other</h3>
+          </div>
+          <div class="skill-tags">
+            <span>Wireshark</span><span>Burp Suite</span><span>Hadoop</span><span>Microsoft Tools</span>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- Wave Divider (inverted) -->
+    <div class="wave-divider wave-flip">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C240,0 480,120 720,60 C960,0 1200,120 1440,60 L1440,120 L0,120 Z" fill="#f8fafc"></path>
+      </svg>
+    </div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="reveal">
+      <div class="section-header">
+        <p class="section-label">What I've Built</p>
+        <h2 class="section-title gradient-text">Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card tilt-card reveal-up">
+          <div class="project-img-wrapper">
+            <img src="./assets/project-1.jpg" alt="Fitness Application" />
+            <div class="project-overlay">
+              <a href="https://github.com/SamvedhyaBendapudi/fitness-app.git" target="_blank" rel="noopener noreferrer" class="overlay-btn">
+                <i class="fa-brands fa-github"></i> View Code
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Fitness Application using Rapid API</h3>
+            <div class="project-tech">
+              <span>React</span><span>API</span><span>JavaScript</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card tilt-card reveal-up">
+          <div class="project-img-wrapper">
+            <img src="./assets/project-2.jpg" alt="Brain Tumor Detection" />
+            <div class="project-overlay">
+              <a href="https://github.com/SamvedhyaBendapudi/Brain-tumor-detection.git" target="_blank" rel="noopener noreferrer" class="overlay-btn">
+                <i class="fa-brands fa-github"></i> View Code
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Brain Tumor Detection System using ML</h3>
+            <div class="project-tech">
+              <span>Python</span><span>ML</span><span>TensorFlow</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card tilt-card reveal-up">
+          <div class="project-img-wrapper">
+            <img src="./assets/undraw_programmer_re_owql.svg" alt="Cloud Encryption" />
+            <div class="project-overlay">
+              <a href="https://github.com/SamvedhyaBendapudi/Encrypting_Files.git" target="_blank" rel="noopener noreferrer" class="overlay-btn">
+                <i class="fa-brands fa-github"></i> View Code
+              </a>
+              <a href="./assets/Research paper.pdf" target="_blank" class="overlay-btn accent">
+                <i class="fa-solid fa-file-lines"></i> Paper
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Securely Deploying Files into Cloud by Encryption</h3>
+            <div class="project-tech">
+              <span>Security</span><span>Cloud</span><span>Encryption</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="reveal">
+      <div class="section-header">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title gradient-text">Contact Me</h2>
+      </div>
+      <div class="contact-cards">
+        <a href="mailto:sbendapudi3769@sdsu.edu" class="contact-card reveal-up">
+          <div class="contact-icon-wrap">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p>sbendapudi3769@sdsu.edu</p>
+        </a>
+        <a href="https://www.linkedin.com/in/samvedhya-bendapudi" target="_blank" rel="noopener noreferrer" class="contact-card reveal-up">
+          <div class="contact-icon-wrap">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>samvedhya-bendapudi</p>
+        </a>
+        <a href="tel:+16196669293" class="contact-card reveal-up">
+          <div class="contact-icon-wrap">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <h3>Phone</h3>
+          <p>+1 (619) 666-9293</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>SB<span class="logo-bracket"> /&gt;</span>
         </div>
-      </nav>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/samvedhya-bendapudi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/SamvedhyaBendapudi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Samvedhya Bendapudi. All rights reserved.</p>
+      </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script src="script.js"></script>
   </body>
 </html>
